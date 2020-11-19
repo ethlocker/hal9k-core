@@ -88,7 +88,8 @@ const deployToken = async () => {
     token.deployTransaction.hash
   );
   console.log(`✅ Deployed ${tokenUnpacked.contractName} to ${token.address}`);
-
+  return;
+  //deploy hal9k ltd
   tokenUnpacked = unpackArtifact("./prodartifacts/HAL9KLtd.json");
   console.log(
     `${tokenUnpacked.contractName} \n Constructor: ${tokenUnpacked.constructor}`

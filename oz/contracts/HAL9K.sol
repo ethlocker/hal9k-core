@@ -2442,7 +2442,7 @@ contract NBUNIERC20 is Context, INBUNIERC20, Ownable {
     string private _name;
     string private _symbol;
     uint8 private _decimals;
-    uint256 public constant initialSupply = 9000e18; // 9k
+    uint256 public constant initialSupply = 100e18; // 9k
     uint256 public contractStartTimestamp;
 
     /**
@@ -2589,7 +2589,7 @@ contract NBUNIERC20 is Context, INBUNIERC20, Ownable {
             contractStartTimestamp.add(8 days) < block.timestamp,
             "Liquidity generation grace period still ongoing"
         ); // About 24h after liquidity generation happens
-        (bool success, ) = msg.sender.call.value(address(this).balance)("");
+        (bool success, ) = msg.sender.call{value: address(this).balance}("");
         require(success, "Transfer failed.");
         _balances[msg.sender] = _balances[address(this)];
         _balances[address(this)] = 0;
